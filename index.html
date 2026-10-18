@@ -3,30 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FixSpot: show them where it breaks</title>
-<meta name="description" content="FixSpot is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.">
+<title>FixPin: show them where it breaks</title>
+<meta name="description" content="FixPin is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.">
 <meta name="theme-color" content="#2f5bd8">
-<link rel="canonical" href="https://george-stathopoulos.github.io/fixspot/">
+<link rel="canonical" href="https://george-stathopoulos.github.io/fixpin/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="FixSpot">
-<meta property="og:title" content="FixSpot: show them where it breaks">
-<meta property="og:description" content="FixSpot is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.">
-<meta property="og:url" content="https://george-stathopoulos.github.io/fixspot/">
-<meta property="og:image" content="https://george-stathopoulos.github.io/fixspot/assets/og.jpg">
+<meta property="og:site_name" content="FixPin">
+<meta property="og:title" content="FixPin: show them where it breaks">
+<meta property="og:description" content="FixPin is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.">
+<meta property="og:url" content="https://george-stathopoulos.github.io/fixpin/">
+<meta property="og:image" content="https://george-stathopoulos.github.io/fixpin/assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/site.css?v=0.1.0.mvedogvz">
-<link rel="stylesheet" href="assets/home.css?v=0.1.0.mvedogvz">
-<link rel="stylesheet" href="assets/fixspot.css?v=0.1.0.mvedogvz">
-<link rel="stylesheet" href="assets/scroll.css?v=0.1.0.mvedogvz">
+<link rel="stylesheet" href="assets/site.css?v=0.1.0.mveebldn">
+<link rel="stylesheet" href="assets/home.css?v=0.1.0.mveebldn">
+<link rel="stylesheet" href="assets/fixpin.css?v=0.1.0.mveebldn">
+<link rel="stylesheet" href="assets/scroll.css?v=0.1.0.mveebldn">
 <script>try{localStorage.removeItem('hdh-site-theme');var t=sessionStorage.getItem('hdh-site-theme');document.documentElement.dataset.theme=t==='light'?'light':'dark';}catch(e){document.documentElement.dataset.theme='dark';}</script>
 
+<!-- Cloudflare Web Analytics: counts visits anonymously, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "64332b427a604e879f82853393ebdb0d"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body data-root="" class="is-home">
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-head">
 	<div class="wrap">
-		<a class="brand" href="./">FixSpot</a>
+		<a class="brand" href="./">FixPin</a>
 		<nav id="site-nav" class="nav" aria-label="Main">
 			<a href="#how">How it works</a>
 			<a href="#features">Features</a>
@@ -36,7 +37,7 @@
 		</nav>
 		<div class="head-actions">
 			<button class="icon-btn" type="button" data-theme-toggle aria-label="Dark theme" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
-			<a class="btn btn-primary btn-sm" href="https://fixspot.george-stathopoulos.workers.dev/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/></svg> Open the app</a>
+			<a class="btn btn-primary btn-sm" href="https://fixpin.george-stathopoulos.workers.dev/"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z"/></svg> Open the app</a>
 			<button class="icon-btn menu-btn" type="button" data-menu-toggle aria-controls="site-nav" aria-expanded="false" aria-label="Menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
 		</div>
 	</div>
@@ -48,7 +49,7 @@
 
 <!-- 1 · Hero -->
 <section class="hp hp--hero" id="top" data-panel data-title="Start">
-	<span class="hp__word" data-px="0.35" aria-hidden="true">SPOT</span>
+	<span class="hp__word" data-px="0.35" aria-hidden="true">PIN</span>
 	<div class="hp__inner hp__inner--split">
 		<div class="hp__text rv">
 			<p class="fx-eyebrow">Free · any website · app + browser extension</p>
@@ -61,11 +62,11 @@
 						<span class="fx-rotator__word">guessing</span>
 					</span>
 					it.</span>
-				<span class="fx-line"><span class="fx-marker">Spot it.</span></span>
+				<span class="fx-line"><span class="fx-marker">Pin it.</span></span>
 			</h1>
 			<p class="fx-lede">Point at what's broken on any website or app, add a note, and share a private link that deletes itself. No account. No “which button?” emails.</p>
 			<div class="cta-row">
-				<a class="btn btn-primary" href="https://fixspot.george-stathopoulos.workers.dev/">Open the app</a>
+				<a class="btn btn-primary" href="https://fixpin.george-stathopoulos.workers.dev/">Open the app</a>
 				<a class="btn btn-ghost" href="docs/extension/">Get the browser extension</a>
 			</div>
 			<p class="fx-meta">Free and open source · No account · Links expire by themselves</p>
@@ -77,7 +78,7 @@
 				<rect x="10" y="32" width="500" height="18" class="b-bar"/>
 				<circle cx="38" cy="30" r="6" class="b-dot"/><circle cx="58" cy="30" r="6" class="b-dot"/><circle cx="78" cy="30" r="6" class="b-dot"/>
 				<rect x="352" y="19" width="142" height="22" rx="11" class="b-spot-btn"/>
-				<text x="423" y="34" text-anchor="middle" class="b-spot-text">FixSpot it</text>
+				<text x="423" y="34" text-anchor="middle" class="b-spot-text">FixPin it</text>
 				<rect x="44" y="82" width="210" height="16" rx="8" class="b-ink"/>
 				<rect x="44" y="110" width="300" height="10" rx="5" class="b-line"/>
 				<rect x="44" y="130" width="250" height="10" rx="5" class="b-line"/>
@@ -120,7 +121,7 @@
 			<div class="fx-msg is-us"><span>We have eleven blue buttons.</span></div>
 			<div class="fx-msg is-them"><span>…the one that does nothing.</span></div>
 			<div class="fx-msg is-us is-late"><span>…three days later: still can't reproduce it.</span></div>
-			<div class="fx-fix"><div><strong>With FixSpot</strong><span>One box around the broken spot, one note, one link. The helper sees exactly what you see.</span></div></div>
+			<div class="fx-fix"><div><strong>With FixPin</strong><span>One box around the broken spot, one note, one link. The helper sees exactly what you see.</span></div></div>
 		</div>
 	</div>
 	<span class="bug" style="left:4%;top:22%" data-note="Text overflows its box">Supercalifragilistic…</span>
@@ -180,10 +181,10 @@
 <section class="hp hp--grid" id="get" data-panel data-title="Get it">
 	<span class="hp__word" data-px="0.35" aria-hidden="true">GET IT</span>
 	<div class="hp__inner">
-		<div class="hp__head rv"><span class="kicker">Get FixSpot</span><h2 class="fx-h2">Use it where you already are.</h2></div>
+		<div class="hp__head rv"><span class="kicker">Get FixPin</span><h2 class="fx-h2">Use it where you already are.</h2></div>
 		<div class="hp__grid hp__grid--4">
-			<article class="fx-card rv"><h3>The app</h3><p>Any device, nothing to install. Add it to your home screen if you like.</p><p><a class="btn btn-primary btn-sm" href="https://fixspot.george-stathopoulos.workers.dev/">Open the app</a></p></article>
-			<article class="fx-card rv"><h3>Chrome, Edge, Brave</h3><p>Captures the page, the spot and the errors in one click. Shortcut: Alt+Shift+F.</p><p><a class="btn btn-ghost btn-sm" href="https://github.com/george-stathopoulos/fixspot-extension/releases/latest">Get the extension</a></p></article>
+			<article class="fx-card rv"><h3>The app</h3><p>Any device, nothing to install. Add it to your home screen if you like.</p><p><a class="btn btn-primary btn-sm" href="https://fixpin.george-stathopoulos.workers.dev/">Open the app</a></p></article>
+			<article class="fx-card rv"><h3>Chrome, Edge, Brave</h3><p>Captures the page, the spot and the errors in one click. Shortcut: Alt+Shift+F.</p><p><a class="btn btn-ghost btn-sm" href="https://github.com/george-stathopoulos/fixpin-extension/releases/latest">Get the extension</a></p></article>
 			<article class="fx-card rv"><h3>Firefox</h3><p>Same extension, same report. Install guide in the help center.</p><p><a class="btn btn-ghost btn-sm" href="docs/extension/">Install guide</a></p></article>
 			<article class="fx-card rv"><h3>Your own server</h3><p>Open source. Host it on your own free Cloudflare account in a few minutes.</p><p><a class="btn btn-ghost btn-sm" href="docs/self-hosting/">Host it yourself</a></p></article>
 		</div>
@@ -198,7 +199,7 @@
 		<div class="fx-promo__box rv">
 			<span class="kicker">Using WordPress? Even better.</span>
 			<h2 class="fx-h2">Point at the problem. Then let them in.</h2>
-			<p class="fx-big">FixSpot shows helpers where it breaks. On a WordPress site, <strong>Fixpass</strong> goes one step further: one click gives your support team a safe, temporary login with no password shared. And <strong>Helpdesk Hero</strong> gives the people on the other side the diagnostics to fix it fast.</p>
+			<p class="fx-big">FixPin shows helpers where it breaks. On a WordPress site, <strong>Fixpass</strong> goes one step further: one click gives your support team a safe, temporary login with no password shared. And <strong>Helpdesk Hero</strong> gives the people on the other side the diagnostics to fix it fast.</p>
 			<div class="cta-row">
 				<a class="btn btn-primary" href="https://george-stathopoulos.github.io/fixpass/">See Fixpass</a>
 				<a class="btn btn-ghost" href="https://george-stathopoulos.github.io/helpdesk-hero/">See Helpdesk Hero</a>
@@ -229,12 +230,12 @@
 	<span class="hp__word" data-px="0.35" aria-hidden="true">GO</span>
 	<div class="hp__inner">
 		<div class="hp__text rv" style="max-width:760px">
-			<h2 class="fx-h2">Why FixSpot exists</h2>
+			<h2 class="fx-h2">Why FixPin exists</h2>
 			<p class="fx-big">It began inside Fixpass, a WordPress plugin with one feature people loved most: Spotlight, the button that lets you point at the broken part of a page. Then people asked, reasonably: “Can I use that on a site that isn't WordPress?” So Spotlight got its own home.</p>
 			<h2 class="fx-h2" style="margin-top:36px">Show them where it breaks.</h2>
 			<div class="cta-row">
-				<a class="btn btn-primary" href="https://fixspot.george-stathopoulos.workers.dev/">Open the app</a>
-				<a class="btn btn-ghost" href="https://github.com/george-stathopoulos/fixspot-extension/releases/latest">Get the extension</a>
+				<a class="btn btn-primary" href="https://fixpin.george-stathopoulos.workers.dev/">Open the app</a>
+				<a class="btn btn-ghost" href="https://github.com/george-stathopoulos/fixpin-extension/releases/latest">Get the extension</a>
 			</div>
 			<p class="fx-meta">Chrome · Edge · Brave · Firefox · any phone · GPL-2.0-or-later</p>
 		</div>
@@ -259,7 +260,7 @@
 	<div class="wrap">
 		<div class="foot-grid">
 			<div class="foot-about">
-				<a class="brand" href="./">FixSpot</a>
+				<a class="brand" href="./">FixPin</a>
 				<p>Point at what's broken on any website or app, and share a private link that deletes itself. Free and open source (GPL).</p>
 			</div>
 			<div>
@@ -267,9 +268,9 @@
 				<ul>
 					<li><a href="#how">How it works</a></li>
 					<li><a href="#features">Features</a></li>
-					<li><a href="https://fixspot.george-stathopoulos.workers.dev/">Open the app</a></li>
-					<li><a href="https://github.com/george-stathopoulos/fixspot-extension/releases/latest">Browser extension</a></li>
-					<li><a href="https://github.com/george-stathopoulos/fixspot">Source code</a></li>
+					<li><a href="https://fixpin.george-stathopoulos.workers.dev/">Open the app</a></li>
+					<li><a href="https://github.com/george-stathopoulos/fixpin-extension/releases/latest">Browser extension</a></li>
+					<li><a href="https://github.com/george-stathopoulos/fixpin">Source code</a></li>
 				</ul>
 			</div>
 			<div>
@@ -294,18 +295,18 @@
 				<ul>
 					<li><a href="docs/privacy/">Privacy</a></li>
 					<li><a href="docs/self-hosting/">Host your own</a></li>
-					<li><a href="https://github.com/george-stathopoulos/fixspot/security/advisories/new">Report a vulnerability</a></li>
-					<li><a href="https://github.com/george-stathopoulos/fixspot/issues">Feedback and ideas</a></li>
+					<li><a href="https://github.com/george-stathopoulos/fixpin/security/advisories/new">Report a vulnerability</a></li>
+					<li><a href="https://github.com/george-stathopoulos/fixpin/issues">Feedback and ideas</a></li>
 				</ul>
 			</div>
 		</div>
 		<div class="foot-bottom">
 			<span>Made with <span class="heart" role="img" aria-label="love">♥</span> by <a href="https://george-stathopoulos.github.io/">George Stathopoulos</a></span>
-			<span>FixSpot 0.1.0 · This website uses no cookies and has no analytics.</span>
+			<span>FixPin 0.1.0 · This website uses no cookies and has no analytics.</span>
 		</div>
 	</div>
 </footer>
-<script src="assets/site.js?v=0.1.0.mvedogvz" defer></script>
-<script src="assets/scroll.js?v=0.1.0.mvedogvz" defer></script>
+<script src="assets/site.js?v=0.1.0.mveebldn" defer></script>
+<script src="assets/scroll.js?v=0.1.0.mveebldn" defer></script>
 </body>
 </html>
