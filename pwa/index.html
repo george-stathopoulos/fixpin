@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fixpass: show support where it breaks</title>
+<meta name="description" content="Point at the problem, add a note, and share a private link that expires by itself. No account.">
+<meta name="theme-color" content="#3b5bdb">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="bar"><a class="brand" href="/"><img src="/icons/icon.svg" alt="" width="28" height="28"> Fixpass</a>
+<button id="help" class="ghost" type="button" aria-label="How it works">?</button></header>
+
+<main>
+<section id="step-pick" class="card">
+	<h1>Show support where it breaks</h1>
+	<p class="lead">Add a screenshot of the problem, point at it, and share a private link. No account, no password. The link expires by itself.</p>
+	<label class="drop" id="drop" tabindex="0">
+		<input id="file" type="file" accept="image/*" hidden>
+		<strong>Choose, drop or paste a screenshot</strong>
+		<span>On a phone, share a screenshot to Fixpass from the share sheet once it is installed.</span>
+	</label>
+	<p class="muted">Using a desktop browser? The <a href="https://github.com/george-stathopoulos/fixpass-extension">Fixpass extension</a> captures the page, the spot, and any errors in one click.</p>
+	<h2 id="recent-h" hidden>Your recent reports</h2>
+	<ul id="recent" class="list"></ul>
+</section>
+
+<section id="step-mark" class="card" hidden>
+	<h2>Point at the problem</h2>
+	<p class="muted">Click or drag a box around each problem (up to 5). Tap a box to remove it.</p>
+	<div class="stage" id="stage"><img id="shot" alt="Your screenshot"><div id="boxes"></div></div>
+	<label>What is wrong?<textarea id="note" rows="3" maxlength="4000" placeholder="For example: the Buy button does nothing."></textarea></label>
+	<label>Page address (optional)<input id="url" type="url" placeholder="https://"></label>
+	<div class="row">
+		<label>Link works for<select id="days"><option value="1">1 day</option><option value="7" selected>7 days</option><option value="30">30 days</option></select></label>
+		<label>Passcode (optional)<input id="pass" type="text" autocomplete="off" maxlength="60"></label>
+	</div>
+	<p class="muted">The screenshot is sent to Fixpass and deleted when the link expires. Do not include passwords or card numbers.</p>
+	<div class="row"><button id="back" class="ghost" type="button">Back</button><button id="create" class="primary" type="button">Create link</button></div>
+	<p id="err" class="err" role="alert" hidden></p>
+</section>
+
+<section id="step-done" class="card" hidden>
+	<h2>Your link is ready</h2>
+	<input id="link" readonly>
+	<div class="row"><button id="copy" class="primary" type="button">Copy link</button><button id="share" class="ghost" type="button" hidden>Share…</button><a id="open" class="btn ghost" href="#">Open</a></div>
+	<p class="muted" id="exp"></p>
+	<button id="again" class="ghost" type="button">New report</button>
+</section>
+</main>
+
+<dialog id="tour"><h2>How Fixpass works</h2>
+<ol><li><b>Show:</b> add a screenshot and point at what is wrong.</li><li><b>Share:</b> send the private link to your support team.</li><li><b>Done:</b> the link and the screenshot are deleted when it expires.</li></ol>
+<form method="dialog"><button class="primary">Got it</button></form></dialog>
+
+<footer><a href="https://george-stathopoulos.github.io/fixpass/">Fixpass for WordPress</a> · <a href="https://github.com/george-stathopoulos/fixpass-app">Source</a> · <a href="/privacy.html">Privacy</a></footer>
+<script src="/app.js" type="module"></script>
+</body>
+</html>

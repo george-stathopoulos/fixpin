@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Fixpass report</title>
+<meta name="theme-color" content="#3b5bdb">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon.svg">
+<link rel="stylesheet" href="/app.css">
+</head>
+<body>
+<header class="bar"><a class="brand" href="/"><img src="/icons/icon.svg" alt="" width="28" height="28"> Fixpass</a></header>
+<main>
+<section id="lock" class="card" hidden>
+	<h2>Passcode needed</h2>
+	<form id="lockform"><label>Passcode<input id="pass" autocomplete="off" required></label><button class="primary">Open report</button></form>
+	<p id="lockerr" class="err" role="alert" hidden></p>
+</section>
+<section id="gone" class="card" hidden><h2 id="gonetitle">Report not available</h2><p class="muted" id="gonemsg"></p><a class="btn" href="/">Make your own report</a></section>
+<section id="report" hidden>
+	<div class="card">
+		<h1 id="title">Report</h1>
+		<p id="note"></p>
+		<div class="stage" id="stage" style="cursor:default"><img id="shot" alt="Screenshot of the problem"><div id="boxes"></div></div>
+	</div>
+	<div class="card"><h2>Details</h2><dl id="details"></dl></div>
+	<div class="card" id="errcard" hidden><h2>Errors on the page</h2><pre id="errors"></pre></div>
+	<div class="row"><button id="copy" class="primary" type="button">Copy details</button><button id="del" class="ghost" type="button" hidden>Delete now</button></div>
+	<p class="muted" id="exp"></p>
+</section>
+</main>
+<footer><a href="/">Fixpass</a> · <a href="/privacy.html">Privacy</a></footer>
+<script src="/view.js" type="module"></script>
+</body>
+</html>

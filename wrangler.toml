@@ -1,0 +1,16 @@
+name = "fixpass"
+main = "worker/index.js"
+compatibility_date = "2026-01-01"
+
+[assets]
+directory = "./pwa"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+# Let /r/<id> reach the Worker instead of 404ing on a missing file.
+not_found_handling = "none"
+
+# Create the namespace once:  npx wrangler kv namespace create REPORTS
+# then paste the id it prints below.
+[[kv_namespaces]]
+binding = "REPORTS"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
