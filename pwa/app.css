@@ -28,3 +28,5 @@ pre{background:var(--bg);padding:10px;border-radius:8px;overflow:auto;font-size:
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:16px}footer a{color:inherit}
 dialog{border:1px solid var(--line);border-radius:var(--r);background:var(--card);color:var(--fg);max-width:420px}
 @media(prefers-reduced-motion:no-preference){.card{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(6px)}}}
+a{color:var(--pri)}
+.brand,.btn{color:inherit}

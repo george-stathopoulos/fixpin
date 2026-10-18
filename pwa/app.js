@@ -1,4 +1,4 @@
-// FixSpot app: add a screenshot, mark the spots, create a private expiring link.
+// FixPin app: add a screenshot, mark the spots, create a private expiring link.
 const $ = ( id ) => document.getElementById( id );
 const MAX_SPOTS = 5;
 let dataUrl = '';
@@ -110,14 +110,14 @@ function drawBoxes() {
 } )();
 
 function remember( entry ) {
-	const list = [ entry, ...store.get( 'fixspot.recent', [] ) ].slice( 0, 20 );
-	store.set( 'fixspot.recent', list );
+	const list = [ entry, ...store.get( 'fixpin.recent', [] ) ].slice( 0, 20 );
+	store.set( 'fixpin.recent', list );
 }
 
 function renderRecent() {
 	const now = Date.now();
-	const list = store.get( 'fixspot.recent', [] ).filter( ( r ) => r.expiresAt > now );
-	store.set( 'fixspot.recent', list );
+	const list = store.get( 'fixpin.recent', [] ).filter( ( r ) => r.expiresAt > now );
+	store.set( 'fixpin.recent', list );
 	$( 'recent-h' ).hidden = ! list.length;
 	$( 'recent' ).replaceChildren( ...list.map( ( r ) => {
 		const li = document.createElement( 'li' );
@@ -195,7 +195,7 @@ $( 'copy' ).addEventListener( 'click', async () => {
 } );
 if ( navigator.share ) {
 	$( 'share' ).hidden = false;
-	$( 'share' ).addEventListener( 'click', () => navigator.share( { title: 'FixSpot report', url: $( 'link' ).value } ).catch( () => {} ) );
+	$( 'share' ).addEventListener( 'click', () => navigator.share( { title: 'FixPin report', url: $( 'link' ).value } ).catch( () => {} ) );
 }
 $( 'help' ).addEventListener( 'click', () => $( 'tour' ).showModal() );
 
@@ -204,15 +204,15 @@ if ( 'serviceWorker' in navigator ) {
 }
 
 // First visit: show the short tour once.
-if ( ! store.get( 'fixspot.toured', false ) ) {
-	store.set( 'fixspot.toured', true );
+if ( ! store.get( 'fixpin.toured', false ) ) {
+	store.set( 'fixpin.toured', true );
 	$( 'tour' ).showModal();
 }
 
 // A screenshot shared from the phone's share sheet.
 if ( new URLSearchParams( location.search ).has( 'shared' ) ) {
 	( async () => {
-		const cache = await caches.open( 'fixspot-share' );
+		const cache = await caches.open( 'fixpin-share' );
 		const img = await cache.match( '/shared-screenshot' );
 		const meta = await ( await cache.match( '/shared-meta' ) )?.json().catch( () => ( {} ) );
 		if ( img ) {

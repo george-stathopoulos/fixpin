@@ -1,5 +1,5 @@
 /**
- * Builds the FixSpot website into website/dist (bin/publish-site.sh publishes it to GitHub Pages).
+ * Builds the FixPin website into website/dist (bin/publish-site.sh publishes it to GitHub Pages).
  *
  * Pages: home, the Help center generated from ../docs/*.md (so the website and the docs never drift
  * apart), and a 404 page. Same layout, footer and project list as the other project sites.
@@ -14,15 +14,15 @@ import { dirname, join } from 'node:path';
 /* ------------------------------------------------------------------ Config */
 
 const SITE = {
-	name: 'FixSpot',
-	url: 'https://george-stathopoulos.github.io/fixspot/',
-	base: '/fixspot/', // Used only by 404.html, which GitHub Pages serves from any path.
+	name: 'FixPin',
+	url: 'https://george-stathopoulos.github.io/fixpin/',
+	base: '/fixpin/', // Used only by 404.html, which GitHub Pages serves from any path.
 	author: 'George Stathopoulos',
 	authorUrl: 'https://george-stathopoulos.github.io/',
-	repo: 'https://github.com/george-stathopoulos/fixspot',
+	repo: 'https://github.com/george-stathopoulos/fixpin',
 	// The app runs on Cloudflare (see docs/self-hosting.md). Change this one line when it moves.
-	app: 'https://fixspot.george-stathopoulos.workers.dev/',
-	extRelease: 'https://github.com/george-stathopoulos/fixspot-extension/releases/latest',
+	app: 'https://fixpin.george-stathopoulos.workers.dev/',
+	extRelease: 'https://github.com/george-stathopoulos/fixpin-extension/releases/latest',
 	fixpass: 'https://george-stathopoulos.github.io/fixpass/',
 	hdh: 'https://george-stathopoulos.github.io/helpdesk-hero/',
 };
@@ -33,7 +33,7 @@ const PROJECTS = [
 	{ name: 'Gatehouse', url: 'https://george-stathopoulos.github.io/gatehouse/', text: 'AI governance and cost control for WordPress' },
 	{ name: 'Helpdesk Hero', url: 'https://george-stathopoulos.github.io/helpdesk-hero/', text: 'WordPress support with diagnostics and password-free access' },
 	{ name: 'Fixpass', url: 'https://george-stathopoulos.github.io/fixpass/', text: 'Spotlight the problem and give support safe, temporary access' },
-	{ name: 'FixSpot', url: 'https://george-stathopoulos.github.io/fixspot/', text: 'Point at what is broken on any website and share a private link' },
+	{ name: 'FixPin', url: 'https://george-stathopoulos.github.io/fixpin/', text: 'Point at what is broken on any website and share a private link' },
 	{ name: 'SheetPilot', url: 'https://george-stathopoulos.github.io/sheetpilot/', text: 'Turn any spreadsheet into an interactive dashboard, in your browser' },
 	{ name: 'Expenity', url: 'https://expenity.github.io/expenity/', text: 'Know where your money goes. English and Greek' },
 ];
@@ -49,6 +49,23 @@ rmSync( OUT, { recursive: true, force: true } );
 mkdirSync( OUT, { recursive: true } );
 cpSync( join( SRC, 'assets' ), join( OUT, 'assets' ), { recursive: true } );
 writeFileSync( join( OUT, '.nojekyll' ), '' );
+
+/* ------------------------------------------------------------------ Images */
+
+// Doc screenshots and animated illustrations: docs/images/* -> assets/img/*.
+mkdirSync( join( OUT, 'assets/img' ), { recursive: true } );
+const IMG = {};
+for ( const f of readdirSync( join( ROOT, 'docs/images' ) ) ) {
+	if ( f.startsWith( '.' ) ) continue;
+	cpSync( join( ROOT, 'docs/images', f ), join( OUT, 'assets/img', f ) );
+	if ( /\.png$/.test( f ) ) {
+		const dims = execFileSync( 'sips', [ '-g', 'pixelWidth', '-g', 'pixelHeight', join( ROOT, 'docs/images', f ) ], { encoding: 'utf8' } );
+		IMG[ f ] = { w: Number( /pixelWidth: (\d+)/.exec( dims )[ 1 ] ), h: Number( /pixelHeight: (\d+)/.exec( dims )[ 1 ] ) };
+	} else {
+		const vb = /<svg[^>]*width="(\d+)" height="(\d+)"/.exec( readFileSync( join( ROOT, 'docs/images', f ), 'utf8' ) );
+		IMG[ f ] = vb ? { w: Number( vb[ 1 ] ), h: Number( vb[ 2 ] ) } : { w: 0, h: 0 };
+	}
+}
 
 /* ------------------------------------------------------------------ Helpers */
 
@@ -88,7 +105,7 @@ const NAV = [
 ];
 
 function logo() {
-	return 'FixSpot';
+	return 'FixPin';
 }
 
 function layout( { title, description, root, current = '', body, canonical = '', extraHead = '', home = false } ) {
@@ -113,10 +130,11 @@ function layout( { title, description, root, current = '', body, canonical = '',
 <link rel="icon" href="${ root }assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="${ root }assets/site.css?v=${ ASSET_V }">
 <link rel="stylesheet" href="${ root }assets/home.css?v=${ ASSET_V }">
-<link rel="stylesheet" href="${ root }assets/fixspot.css?v=${ ASSET_V }">
+<link rel="stylesheet" href="${ root }assets/fixpin.css?v=${ ASSET_V }">
 ${ home ? `<link rel="stylesheet" href="${ root }assets/scroll.css?v=${ ASSET_V }">` : '' }
 <script>try{localStorage.removeItem('hdh-site-theme');var t=sessionStorage.getItem('hdh-site-theme');document.documentElement.dataset.theme=t==='light'?'light':'dark';}catch(e){document.documentElement.dataset.theme='dark';}</script>
 ${ extraHead }
+<!-- Cloudflare Web Analytics: counts visits anonymously, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "64332b427a604e879f82853393ebdb0d"}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body data-root="${ root }"${ home ? ' class="is-home"' : '' }>
 <a class="skip" href="#main">Skip to content</a>
@@ -182,7 +200,7 @@ ${ body }
 		</div>
 		<div class="foot-bottom">
 			<span>Made with <span class="heart" role="img" aria-label="love">♥</span> by <a href="${ SITE.authorUrl }">${ SITE.author }</a></span>
-			<span>FixSpot ${ VERSION } · This website uses no cookies and has no analytics.</span>
+			<span>FixPin ${ VERSION } · This website uses no cookies and has no analytics.</span>
 		</div>
 	</div>
 </footer>
@@ -203,7 +221,7 @@ function write( path, html ) {
 
 const GROUPS = [
 	{ label: 'Start here', pages: [ 'getting-started', 'extension' ] },
-	{ label: 'Using FixSpot', pages: [ 'sharing', 'privacy', 'faq' ] },
+	{ label: 'Using FixPin', pages: [ 'sharing', 'privacy', 'faq' ] },
 	{ label: 'For developers', pages: [ 'self-hosting', 'developers' ] },
 ];
 const ORDER = GROUPS.flatMap( ( g ) => g.pages );
@@ -213,7 +231,7 @@ const BLURB = {
 	sharing: 'Links, expiry, passcodes and deleting a report early.',
 	privacy: 'What is stored, for how long, and who can see it.',
 	faq: 'Quick answers to the most common questions.',
-	'self-hosting': 'Run your own FixSpot on a free Cloudflare account.',
+	'self-hosting': 'Run your own FixPin on a free Cloudflare account.',
 	developers: 'The API, the report format and the storage.',
 };
 const ICON = {
@@ -246,6 +264,17 @@ for ( const name of ORDER ) {
 				else headings.push( { level: tok.tag, id, text: text.replace( /[`*]/g, '' ) } );
 			}
 			( state.tokens[ i ].children || [] ).forEach( ( c ) => {
+				if ( c.type === 'image' ) {
+					const m = /images\/([\w.-]+)$/.exec( c.attrGet( 'src' ) );
+					if ( ! m || ! IMG[ m[ 1 ] ] ) throw new Error( `docs/${ name }.md: missing image ${ c.attrGet( 'src' ) }` );
+					c.attrSet( 'src', `../../assets/img/${ m[ 1 ] }` );
+					if ( IMG[ m[ 1 ] ].w ) {
+						c.attrSet( 'width', String( IMG[ m[ 1 ] ].w ) );
+						c.attrSet( 'height', String( IMG[ m[ 1 ] ].h ) );
+					}
+					c.attrSet( 'loading', 'lazy' );
+					c.attrSet( 'decoding', 'async' );
+				}
 				if ( c.type === 'link_open' ) {
 					// The docs use GitHub-friendly links (other-guide.md#section); on the site they're pages.
 					const href = c.attrGet( 'href' );
@@ -326,7 +355,7 @@ ${ toc.length > 1 ? `<nav class="on-page" aria-label="On this page" data-spy><h2
 </div>`;
 	write(
 		`docs/${ name }/index.html`,
-		layout( { title: d.title, description: BLURB[ name ] + ' FixSpot help center.', root: '../../', current: 'docs', canonical: `docs/${ name }/`, body, extraHead: SEARCH_SCRIPT( '../../' ) } )
+		layout( { title: d.title, description: BLURB[ name ] + ' FixPin help center.', root: '../../', current: 'docs', canonical: `docs/${ name }/`, body, extraHead: SEARCH_SCRIPT( '../../' ) } )
 	);
 } );
 
@@ -338,12 +367,12 @@ ${ toc.length > 1 ? `<nav class="on-page" aria-label="On this page" data-spy><h2
 		[ 'sharing', 'passcode', 'Add a passcode' ],
 		[ 'sharing', 'delete-it-early', 'Delete a report early' ],
 		[ 'privacy', '', 'What is stored, and for how long' ],
-		[ 'self-hosting', '', 'Host your own FixSpot' ],
+		[ 'self-hosting', '', 'Host your own FixPin' ],
 	];
 	const body = `<section class="docs-hero">
 	<div class="wrap">
 		<h1>How can we help?</h1>
-		<p>Guides and answers for FixSpot: the app, the browser extension, sharing and privacy.</p>
+		<p>Guides and answers for FixPin: the app, the browser extension, sharing and privacy.</p>
 		${ searchBox( 'hero-search', 'Search, e.g. “passcode”, “extension”, “expire”' ) }
 	</div>
 </section>
@@ -357,7 +386,7 @@ ${ toc.length > 1 ? `<nav class="on-page" aria-label="On this page" data-spy><h2
 		${ g.pages.map( ( p ) => `<a class="card" href="${ p }/"><span class="ic">${ ICON[ p ] }</span><h3>${ esc( docs[ p ].title ) }</h3><p>${ esc( BLURB[ p ] ) }</p></a>` ).join( '\n\t\t' ) }
 	</div>` ).join( '\n\t' ) }
 </div>`;
-	write( 'docs/index.html', layout( { title: 'Help center', description: 'Guides and answers for FixSpot: the app, the browser extension, sharing and privacy.', root: '../', current: 'docs', canonical: 'docs/', body, extraHead: SEARCH_SCRIPT( '../' ) } ) );
+	write( 'docs/index.html', layout( { title: 'Help center', description: 'Guides and answers for FixPin: the app, the browser extension, sharing and privacy.', root: '../', current: 'docs', canonical: 'docs/', body, extraHead: SEARCH_SCRIPT( '../' ) } ) );
 }
 
 /* ------------------------------------------------------------------ Home */
@@ -366,13 +395,13 @@ ${ toc.length > 1 ? `<nav class="on-page" aria-label="On this page" data-spy><h2
 	const body = readFileSync( join( SRC, 'home.html' ), 'utf8' )
 		.replace( /\{\{app\}\}/g, SITE.app ).replace( /\{\{extRelease\}\}/g, SITE.extRelease )
 		.replace( /\{\{fixpass\}\}/g, SITE.fixpass ).replace( /\{\{hdh\}\}/g, SITE.hdh );
-	write( 'index.html', layout( { title: SITE.name, description: 'FixSpot is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.', root: '', current: '', body, home: true } ) );
+	write( 'index.html', layout( { title: SITE.name, description: 'FixPin is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.', root: '', current: '', body, home: true } ) );
 }
 
 /* ------------------------------------------------------------------ 404, sitemap, robots */
 
 {
-	const body = `<section class="page-head" style="border:0;text-align:center;padding:120px 0"><div class="wrap"><span class="kicker">404</span><h1>Nothing to spot here</h1><p style="margin:0 auto 28px">This page may have moved. Try the help center, or start from the home page.</p><div class="cta-row"><a class="btn btn-primary" href="${ SITE.base }">Home</a><a class="btn btn-ghost" href="${ SITE.base }docs/">Help center</a></div></div></section>`;
+	const body = `<section class="page-head" style="border:0;text-align:center;padding:120px 0"><div class="wrap"><span class="kicker">404</span><h1>Nothing pinned here</h1><p style="margin:0 auto 28px">This page may have moved. Try the help center, or start from the home page.</p><div class="cta-row"><a class="btn btn-primary" href="${ SITE.base }">Home</a><a class="btn btn-ghost" href="${ SITE.base }docs/">Help center</a></div></div></section>`;
 	write( '404.html', layout( { title: 'Page not found', description: 'Page not found.', root: SITE.base, body } ) );
 	const urls = [ '', 'docs/', ...ORDER.map( ( p ) => `docs/${ p }/` ) ];
 	write( 'sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ urls.map( ( u ) => `<url><loc>${ SITE.url }${ u }</loc></url>` ).join( '\n' ) }\n</urlset>\n` );

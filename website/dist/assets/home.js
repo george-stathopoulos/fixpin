@@ -1,5 +1,5 @@
 /**
- * FixSpot home page: rotating headline, pointer spotlight, parallax, sideways "How it works",
+ * FixPin home page: rotating headline, pointer spotlight, parallax, sideways "How it works",
  * reveal on scroll. Everything stays still for people who prefer reduced motion.
  */
 ( function () {

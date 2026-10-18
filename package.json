@@ -1,8 +1,8 @@
 {
-  "name": "fixspot",
+  "name": "fixpin",
   "version": "0.1.0",
   "private": true,
-  "description": "FixSpot app: installable PWA and Cloudflare Worker for sharing Spotlight reports.",
+  "description": "FixPin app: installable PWA and Cloudflare Worker for sharing Spotlight reports.",
   "license": "GPL-2.0-or-later",
   "type": "module",
   "scripts": {

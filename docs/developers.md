@@ -1,9 +1,9 @@
 # Developers
 
-FixSpot is two repositories:
+FixPin is two repositories:
 
-- [fixspot](https://github.com/george-stathopoulos/fixspot): the app (`pwa/`), the Cloudflare Worker (`worker/`) and this website (`website/`).
-- [fixspot-extension](https://github.com/george-stathopoulos/fixspot-extension): the browser extension.
+- [fixpin](https://github.com/george-stathopoulos/fixpin): the app (`pwa/`), the Cloudflare Worker (`worker/`) and this website (`website/`).
+- [fixpin-extension](https://github.com/george-stathopoulos/fixpin-extension): the browser extension.
 
 ## The API
 

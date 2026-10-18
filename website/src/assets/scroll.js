@@ -1,5 +1,5 @@
 /**
- * FixSpot home: vertical scrolling moves one long page sideways, your pointer is a flashlight,
+ * FixPin home: vertical scrolling moves one long page sideways, your pointer is a flashlight,
  * and things that are broken in the dark get boxed and numbered when the light finds them.
  * Small screens and no-JavaScript visitors get the same panels stacked, with the lights on.
  */

@@ -1,4 +1,4 @@
-/* FixSpot: same family as the other project sites, with its own colour (blue and a yellow marker). */
+/* FixPin: same family as the other project sites, with its own colour (blue and a yellow marker). */
 :root { --accent:#2f5bd8; --accent-hover:#2748b3; --accent-ink:#fff; --accent-soft:rgba(47,91,216,.08); --accent-line:rgba(47,91,216,.28); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent:#8fa8ff; --accent-hover:#a6b9ff; --accent-ink:#0f1630; --accent-soft:rgba(143,168,255,.12); --accent-line:rgba(143,168,255,.35); } }
 :root[data-theme="dark"] { --accent:#8fa8ff; --accent-hover:#a6b9ff; --accent-ink:#0f1630; --accent-soft:rgba(143,168,255,.12); --accent-line:rgba(143,168,255,.35); }

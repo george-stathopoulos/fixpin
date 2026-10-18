@@ -18,6 +18,8 @@ Open the report on the device that created it and press **Delete now**. It is go
 
 ## What the report page shows
 
+![The report page: the screenshot with numbered spots, the note, and details such as the page, screen size and browser.](images/report-view.png)
+
 The screenshot with your numbered spots, your note, the page address, screen size and browser, any errors the extension collected, and a **Copy details** button that formats everything as plain text for an email or ticket.
 
 ## Size limit

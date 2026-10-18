@@ -1,4 +1,4 @@
-# Host your own FixSpot
+# Host your own FixPin
 
 You need a free Cloudflare account.
 

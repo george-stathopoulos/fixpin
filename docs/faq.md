@@ -6,7 +6,7 @@ No. There are no accounts. Reports are private links that expire.
 
 ## Is it free?
 
-Yes. FixSpot is free and open source (GPL).
+Yes. FixPin is free and open source (GPL).
 
 ## Who can see my report?
 
@@ -16,9 +16,9 @@ Anyone with the link, and the passcode if you set one. Nobody else: reports are 
 
 Hide it before you send. The app and the extension send exactly the screenshot you see, nothing more. Don't include passwords or card numbers.
 
-## Does FixSpot give support access to my site?
+## Does FixPin give support access to my site?
 
-No. FixSpot only shows the problem. For WordPress sites, [Fixpass](https://george-stathopoulos.github.io/fixpass/) adds safe, temporary administrator access.
+No. FixPin only shows the problem. For WordPress sites, [Fixpass](https://george-stathopoulos.github.io/fixpass/) adds safe, temporary administrator access.
 
 ## Does it work offline?
 
@@ -26,7 +26,7 @@ The app opens offline, but creating and opening reports needs a connection, beca
 
 ## Can I run my own server?
 
-Yes. See [Host your own FixSpot](self-hosting.md).
+Yes. See [Host your own FixPin](self-hosting.md).
 
 ## Which browsers does the extension support?
 

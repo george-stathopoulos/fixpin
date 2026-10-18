@@ -1,6 +1,6 @@
 {
-  "name": "FixSpot",
-  "short_name": "FixSpot",
+  "name": "FixPin",
+  "short_name": "FixPin",
   "description": "Show support where it breaks. Point at the problem and share a private, expiring link.",
   "start_url": "/",
   "scope": "/",
