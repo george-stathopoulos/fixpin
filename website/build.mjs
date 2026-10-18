@@ -128,6 +128,7 @@ function layout( { title, description, root, current = '', body, canonical = '',
 <meta property="og:image" content="${ SITE.url }assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${ root }assets/favicon.svg" type="image/svg+xml">
+<!-- Cloudflare Web Analytics: counts visits anonymously, no cookies --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "64332b427a604e879f82853393ebdb0d"}'></script><!-- End Cloudflare Web Analytics -->
 <link rel="stylesheet" href="${ root }assets/site.css?v=${ ASSET_V }">
 <link rel="stylesheet" href="${ root }assets/home.css?v=${ ASSET_V }">
 <link rel="stylesheet" href="${ root }assets/fixpin.css?v=${ ASSET_V }">
@@ -200,7 +201,7 @@ ${ body }
 		</div>
 		<div class="foot-bottom">
 			<span>Made with <span class="heart" role="img" aria-label="love">♥</span> by <a href="${ SITE.authorUrl }">${ SITE.author }</a></span>
-			<span>FixPin ${ VERSION } · This website uses no cookies and has no analytics.</span>
+			<span>FixPin ${ VERSION } · This website uses no cookies. Visits are counted anonymously, with no personal data.</span>
 		</div>
 	</div>
 </footer>
