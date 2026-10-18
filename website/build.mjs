@@ -114,6 +114,7 @@ function layout( { title, description, root, current = '', body, canonical = '',
 <link rel="stylesheet" href="${ root }assets/site.css?v=${ ASSET_V }">
 <link rel="stylesheet" href="${ root }assets/home.css?v=${ ASSET_V }">
 <link rel="stylesheet" href="${ root }assets/fixspot.css?v=${ ASSET_V }">
+${ home ? `<link rel="stylesheet" href="${ root }assets/scroll.css?v=${ ASSET_V }">` : '' }
 <script>try{localStorage.removeItem('hdh-site-theme');var t=sessionStorage.getItem('hdh-site-theme');document.documentElement.dataset.theme=t==='light'?'light':'dark';}catch(e){document.documentElement.dataset.theme='dark';}</script>
 ${ extraHead }
 </head>
@@ -186,7 +187,7 @@ ${ body }
 	</div>
 </footer>
 <script src="${ root }assets/site.js?v=${ ASSET_V }" defer></script>
-${ home ? `<script src="${ root }assets/home.js?v=${ ASSET_V }" defer></script>` : '' }
+${ home ? `<script src="${ root }assets/scroll.js?v=${ ASSET_V }" defer></script>` : '' }
 </body>
 </html>
 `;
