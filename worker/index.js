@@ -1,5 +1,5 @@
 /**
- * Fixpass Worker: stores Spotlight reports for a limited time and serves the app.
+ * FixSpot Worker: stores Spotlight reports for a limited time and serves the app.
  *
  * - POST   /api/reports      create a report -> { id, ownerToken, expiresAt }
  * - GET    /api/reports/:id  read a report (X-Passcode header if it has one)

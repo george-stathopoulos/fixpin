@@ -1,6 +1,6 @@
-// Fixpass service worker: works offline for the app shell, and receives screenshots
-// shared to Fixpass from the phone's share sheet.
-const CACHE = 'fixpass-v1';
+// FixSpot service worker: works offline for the app shell, and receives screenshots
+// shared to FixSpot from the phone's share sheet.
+const CACHE = 'fixspot-v1';
 const SHELL = [ '/', '/view', '/app.css', '/app.js', '/view.js', '/manifest.webmanifest', '/icons/icon.svg', '/icons/icon-192.png' ];
 
 self.addEventListener( 'install', ( e ) => {
@@ -22,7 +22,7 @@ self.addEventListener( 'fetch', ( e ) => {
 	if ( req.method === 'POST' && url.pathname === '/share' ) {
 		e.respondWith( ( async () => {
 			const form = await req.formData();
-			const cache = await caches.open( 'fixpass-share' );
+			const cache = await caches.open( 'fixspot-share' );
 			const file = form.get( 'screenshot' );
 			if ( file && file.size ) {
 				await cache.put( '/shared-screenshot', new Response( file, { headers: { 'content-type': file.type } } ) );

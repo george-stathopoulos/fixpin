@@ -1,4 +1,4 @@
-// Fixpass report viewer: shows the screenshot with the marked spots, the details and the errors.
+// FixSpot report viewer: shows the screenshot with the marked spots, the details and the errors.
 const $ = ( id ) => document.getElementById( id );
 const id = location.pathname.split( '/' ).pop();
 let text = '';
@@ -51,7 +51,7 @@ async function load( pass ) {
 function render( { report: r, expiresAt, createdAt } ) {
 	$( 'lock' ).hidden = true;
 	$( 'report' ).hidden = false;
-	document.title = 'Fixpass report' + ( r.title ? ': ' + r.title : '' );
+	document.title = 'FixSpot report' + ( r.title ? ': ' + r.title : '' );
 	$( 'title' ).textContent = r.title || 'Report';
 	$( 'note' ).textContent = r.note;
 	if ( r.screenshot ) {
@@ -79,13 +79,13 @@ function render( { report: r, expiresAt, createdAt } ) {
 	}
 	$( 'exp' ).textContent = 'This report is deleted on ' + new Date( expiresAt ).toLocaleString() + '.';
 	text = [
-		'Fixpass report: ' + location.href, r.note && 'Problem: ' + r.note, r.url && 'Page: ' + r.url,
+		'FixSpot report: ' + location.href, r.note && 'Problem: ' + r.note, r.url && 'Page: ' + r.url,
 		r.viewport.w && `Screen: ${ r.viewport.w }x${ r.viewport.h }`, r.ua && 'Browser: ' + r.ua,
 		...r.spots.map( ( s, i ) => `Spot ${ i + 1 }: ` + ( s.selector || `${ Math.round( s.x * 100 ) }%, ${ Math.round( s.y * 100 ) }%` ) ),
 		r.errors.length && 'Errors:\n' + r.errors.map( ( e ) => `  [${ e.type }] ${ e.msg }` ).join( '\n' ),
 	].filter( Boolean ).join( '\n' );
 	let owner = '';
-	try { owner = ( JSON.parse( localStorage.getItem( 'fixpass.recent' ) ) || [] ).find( ( x ) => x.id === id )?.owner || ''; } catch { /* none */ }
+	try { owner = ( JSON.parse( localStorage.getItem( 'fixspot.recent' ) ) || [] ).find( ( x ) => x.id === id )?.owner || ''; } catch { /* none */ }
 	if ( owner ) {
 		$( 'del' ).hidden = false;
 		$( 'del' ).onclick = async () => {

@@ -1,4 +1,4 @@
-# Deploy your own Fixpass server
+# Host your own FixSpot
 
 You need a free Cloudflare account.
 
