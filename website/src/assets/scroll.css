@@ -62,8 +62,8 @@ html:not([data-theme="dark"]) .bug { opacity: .55; }
 .is-hs.has-light .hs__dark {
 	display: block; position: fixed; inset: 0; z-index: 40; pointer-events: none;
 	background:
-		radial-gradient(circle var(--r, 300px) at var(--mx, 50vw) var(--my, 50vh), rgba(255,226,140,.13) 0%, rgba(255,226,140,.06) 40%, transparent 72%),
-		radial-gradient(circle calc(var(--r, 300px) * 1.8) at var(--mx, 50vw) var(--my, 50vh), transparent 0%, transparent 42%, rgba(3,5,12,.58) 100%);
+		radial-gradient(circle calc(var(--r, 380px) * .9) at var(--mx, 50vw) var(--my, 50vh), rgba(255,230,150,.26) 0%, rgba(255,230,150,.14) 45%, transparent 80%),
+		radial-gradient(circle calc(var(--r, 380px) * 2.1) at var(--mx, 50vw) var(--my, 50vh), transparent 0%, transparent 58%, rgba(3,5,12,.5) 100%);
 }
 html:not([data-theme="dark"]) .hs__dark { display: none !important; }
 

@@ -149,7 +149,7 @@
 	function findBugs() {
 		var cx = light.x;
 		var cy = light.y;
-		var r = 130;
+		var r = 190;
 		if ( ! body.classList.contains( 'has-light' ) ) {
 			cx = innerWidth / 2;
 			cy = innerHeight / 2;
