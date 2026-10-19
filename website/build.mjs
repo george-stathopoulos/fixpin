@@ -169,6 +169,7 @@ ${ body }
 					<li><a href="${ fix( 'index.html#features' ) }">Features</a></li>
 					<li><a href="${ SITE.app }">Open the app</a></li>
 					<li><a href="${ SITE.extRelease }">Browser extension</a></li>
+					<li><a href="${ root }changelog/">Changelog</a></li>
 					<li><a href="${ SITE.repo }">Source code</a></li>
 				</ul>
 			</div>
@@ -400,12 +401,23 @@ ${ toc.length > 1 ? `<nav class="on-page" aria-label="On this page" data-spy><h2
 	write( 'index.html', layout( { title: SITE.name, description: 'FixPin is free: point at what is broken on any website, add a note, and share a private link that deletes itself. App and browser extension.', root: '', current: '', body, home: true } ) );
 }
 
+/* ------------------------------------------------------------------ Changelog */
+
+{
+	const md = new MarkdownIt( { html: false } );
+	const log = readFileSync( join( ROOT, 'CHANGELOG.md' ), 'utf8' ).replace( /^# .*\n+(All notable[^\n]*\n+)?/, '' );
+	const body = `
+<section class="page-head"><div class="wrap"><span class="kicker">Changelog</span><h1>What's new</h1><p>Every change to the FixPin app, website and browser extension, newest first.</p></div></section>
+<div class="wrap" style="padding:64px 24px 120px"><div class="prose">${ md.render( log ) }</div></div>`;
+	write( 'changelog/index.html', layout( { title: 'Changelog', description: 'Release notes for the FixPin app and browser extension.', root: '../', canonical: 'changelog/', body } ) );
+}
+
 /* ------------------------------------------------------------------ 404, sitemap, robots */
 
 {
 	const body = `<section class="page-head" style="border:0;text-align:center;padding:120px 0"><div class="wrap"><span class="kicker">404</span><h1>Nothing pinned here</h1><p style="margin:0 auto 28px">This page may have moved. Try the help center, or start from the home page.</p><div class="cta-row"><a class="btn btn-primary" href="${ SITE.base }">Home</a><a class="btn btn-ghost" href="${ SITE.base }docs/">Help center</a></div></div></section>`;
 	write( '404.html', layout( { title: 'Page not found', description: 'Page not found.', root: SITE.base, body } ) );
-	const urls = [ '', 'docs/', ...ORDER.map( ( p ) => `docs/${ p }/` ) ];
+	const urls = [ '', 'changelog/', 'docs/', ...ORDER.map( ( p ) => `docs/${ p }/` ) ];
 	write( 'sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${ urls.map( ( u ) => `<url><loc>${ SITE.url }${ u }</loc></url>` ).join( '\n' ) }\n</urlset>\n` );
 	write( 'robots.txt', `User-agent: *\nAllow: /\nSitemap: ${ SITE.url }sitemap.xml\n` );
 }
