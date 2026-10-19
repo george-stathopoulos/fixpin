@@ -206,6 +206,7 @@ ${ body }
 	</div>
 </footer>
 <script src="${ root }assets/site.js?v=${ ASSET_V }" defer></script>
+<script src="${ root }assets/share-heart.js?v=${ ASSET_V }" data-site="fixpin" data-url="${ SITE.url }" data-msg="Found a bug? So will your friends. Share the pin." defer></script>
 ${ home ? `<script src="${ root }assets/scroll.js?v=${ ASSET_V }" defer></script>` : '' }
 </body>
 </html>
